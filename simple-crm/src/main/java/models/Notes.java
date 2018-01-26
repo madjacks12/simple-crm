@@ -8,9 +8,10 @@ public class Notes extends Client {
     private String writtenBy;
     private String content;
     private long createdAt;
+    private int id;
 
-    public Notes(String name, String phone, String email, int id) {
-        super(name, phone, email, id);
+    public Notes(String name, String phone, String email) {
+        super(name, phone, email);
         this.writtenBy = writtenBy;
         this.content = content;
         this.createdAt = System.currentTimeMillis();
@@ -26,6 +27,16 @@ public class Notes extends Client {
 
     public long getCreatedAt() {
         return createdAt;
+    }
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    @Override
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getFormattedCreatedAt(){

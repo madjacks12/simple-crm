@@ -4,9 +4,11 @@ public class ClientType {
 
     private int id;
     private String typeName;
+    private int clientId;
 
-    public ClientType(String typeName) {
+    public ClientType(String typeName, int clientId) {
         this.typeName=typeName;
+        this.clientId=clientId;
     }
 
     public int getId() {
@@ -25,6 +27,14 @@ public class ClientType {
         this.typeName = typeName;
     }
 
+    public int getClientId() {
+        return clientId;
+    }
+
+    public void setClientId(int clientId) {
+        this.clientId = clientId;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -33,6 +43,7 @@ public class ClientType {
         ClientType that = (ClientType) o;
 
         if (id != that.id) return false;
+        if (clientId != that.clientId) return false;
         return typeName.equals(that.typeName);
     }
 
@@ -40,6 +51,7 @@ public class ClientType {
     public int hashCode() {
         int result = id;
         result = 31 * result + typeName.hashCode();
+        result = 31 * result + clientId;
         return result;
     }
 }

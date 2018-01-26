@@ -10,8 +10,8 @@ public class Contact extends Client {
     private int id;
     private int clientId;
 
-    public Contact(String name, String phone, String email, int clientId, String firstName, String lastName, String position, String contactPhone, String contactEmail) {
-        super(name, phone, email, clientId);
+    public Contact(String name, String phone, String email, String firstName, String lastName, String position, String contactPhone, String contactEmail) {
+        super(name, phone, email);
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;

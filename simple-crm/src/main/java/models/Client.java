@@ -5,13 +5,12 @@ public class Client {
     private String name;
     private String phone;
     private String email;
-    private int clientId;
+    private int id;
 
-    public Client(String name, String phone, String email, int clientId) {
+    public Client(String name, String phone, String email) {
         this.name=name;
         this.phone=phone;
         this.email = email;
-        this.clientId = clientId;
     }
 
     public String getName() {
@@ -27,11 +26,11 @@ public class Client {
     }
 
     public int getId() {
-        return clientId;
+        return id;
     }
 
     public void setId(int id) {
-        this.clientId = id;
+        this.id = id;
     }
 
     @Override
@@ -41,7 +40,7 @@ public class Client {
 
         Client client = (Client) o;
 
-        if (clientId != client.clientId) return false;
+        if (id != client.id) return false;
         if (!name.equals(client.name)) return false;
         if (phone != null ? !phone.equals(client.phone) : client.phone != null) return false;
         return email != null ? email.equals(client.email) : client.email == null;
@@ -52,7 +51,7 @@ public class Client {
         int result = name.hashCode();
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + clientId;
+        result = 31 * result + id;
         return result;
     }
 }

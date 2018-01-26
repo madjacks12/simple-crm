@@ -10,13 +10,14 @@ public class Address extends Client {
     private int id;
     private int clientId;
 
-    public Address(String name, String phone, String email, String street, String postalCode, String country, String city, String state) {
+    public Address(String name, String phone, String email, String street, String postalCode, String country, String city, String state, int clientId) {
         super(name, phone, email);
         this.street=street;
         this.postalCode=postalCode;
         this.country=country;
         this.city=city;
         this.state=state;
+        this.clientId=clientId;
     }
 
     public String getStreet() {

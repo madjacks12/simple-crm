@@ -3,7 +3,7 @@ package models;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class Notes extends Client {
+public class Notes{
 
     private String writtenBy;
     private String content;
@@ -12,7 +12,6 @@ public class Notes extends Client {
     private int clientId;
 
     public Notes(String name, String phone, String email, int clientId) {
-        super(name, phone, email);
         this.writtenBy = writtenBy;
         this.content = content;
         this.createdAt = System.currentTimeMillis();
@@ -37,6 +36,10 @@ public class Notes extends Client {
 
     public void setClientId(int clientId) {
         this.clientId = clientId;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public String getFormattedCreatedAt(){

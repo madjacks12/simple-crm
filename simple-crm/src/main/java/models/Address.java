@@ -1,6 +1,6 @@
 package models;
 
-public class Address extends Client {
+public class Address {
 
     private String street;
     private String postalCode;
@@ -10,8 +10,7 @@ public class Address extends Client {
     private int id;
     private int clientId;
 
-    public Address(String name, String phone, String email, String street, String postalCode, String country, String city, String state, int clientId) {
-        super(name, phone, email);
+    public Address(String street, String postalCode, String country, String city, String state, int clientId) {
         this.street=street;
         this.postalCode=postalCode;
         this.country=country;

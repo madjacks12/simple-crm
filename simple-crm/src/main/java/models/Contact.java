@@ -1,6 +1,6 @@
 package models;
 
-public class Contact extends Client {
+public class Contact{
 
     private String firstName;
     private String lastName;
@@ -10,8 +10,7 @@ public class Contact extends Client {
     private int id;
     private int clientId;
 
-    public Contact(String name, String phone, String email, String firstName, String lastName, String position, String contactPhone, String contactEmail, int clientId) {
-        super(name, phone, email);
+    public Contact(String firstName, String lastName, String position, String contactPhone, String contactEmail, int clientId) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;

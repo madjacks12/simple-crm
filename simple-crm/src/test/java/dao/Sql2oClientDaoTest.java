@@ -42,6 +42,7 @@ public class Sql2oClientDaoTest {
         Client testClient = setupClient();
         int originalClientId = testClient.getId();
         clientDao.add(testClient);
+        //must add +1 to expected every time.
         assertEquals(4, testClient.getId());
 
     }

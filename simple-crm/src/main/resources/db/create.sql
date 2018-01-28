@@ -1,44 +1,47 @@
-SET MODE PostgreSQL;
 
 CREATE TABLE IF NOT EXISTS clients (
- id int PRIMARY KEY auto_increment,
- name VARCHAR,
+ id SERIAL PRIMARY KEY,
+ clientname VARCHAR,
  phone VARCHAR,
  email VARCHAR
 );
 
-CREATE TABLE IF NOT EXISTS clienttypes (
- id int PRIMARY KEY auto_increment,
- name VARCHAR
+CREATE TABLE IF NOT EXISTS clienttypes(
+ id SERIAL PRIMARY KEY,
+ typeName VARCHAR,
+ clientId INTEGER
 );
 
-CREATE TABLE IF NOT EXISTS addresses (
- id int PRIMARY KEY auto_increment,
+CREATE TABLE IF NOT EXISTS addresses(
+ id SERIAL PRIMARY KEY,
  street VARCHAR,
  postalcode VARCHAR,
  country VARCHAR,
  city VARCHAR,
- state VARCHAR
+ state VARCHAR,
+ clientID INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS contacts (
- id int PRIMARY KEY auto_increment,
+ id SERIAL PRIMARY KEY,
  firstname VARCHAR,
  lastname VARCHAR,
  position VARCHAR,
  contactphone VARCHAR,
- contactemail VARCHAR
+ contactemail VARCHAR,
+ ClientId INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS notes (
- id int PRIMARY KEY auto_increment,
+ id SERIAL PRIMARY KEY,
  writtenby VARCHAR,
  content VARCHAR,
- createdat BIGINT
+ createdat BIGINT,
+ clientID INTEGER
 );
 
 CREATE TABLE IF NOT EXISTS clients_clienttypes (
- id int PRIMARY KEY auto_increment,
+ id SERIAL PRIMARY KEY,
  clientid INTEGER,
- clienttypeid INTEGER,
+ clienttypeid INTEGER
 );

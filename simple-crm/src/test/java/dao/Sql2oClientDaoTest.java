@@ -8,10 +8,15 @@ import org.junit.Test;
 import org.sql2o.Sql2o;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
+import java.sql.*;
 
 import static org.junit.Assert.*;
 
 public class Sql2oClientDaoTest {
+
+    private final String url = "jdbc:postgresql://localhost:5432/crm";
+    private final String user = "admin";
+    private final String password = "admin";
 
     private Connection conn;
     private Sql2oClientDao clientDao;
@@ -20,8 +25,8 @@ public class Sql2oClientDaoTest {
 
     @Before
     public void setUp() throws Exception {
-        String connectionString = "jdbc:h2:mem:testing;INIT=RUNSCRIPT from 'classpath:db/create.sql'";
-        Sql2o sql2o = new Sql2o(connectionString, "", "");
+        String connectionString = "jdbc:postgresql://localhost:5432/crm";
+        Sql2o sql2o = new Sql2o(connectionString, "admin", "admin");
         clientDao = new Sql2oClientDao(sql2o);
         clientTypeDao = new Sql2oClientTypeDao(sql2o);
         conn = sql2o.open();
@@ -37,7 +42,7 @@ public class Sql2oClientDaoTest {
         Client testClient = setupClient();
         int originalClientId = testClient.getId();
         clientDao.add(testClient);
-        assertEquals(1, testClient.getId());
+        assertEquals(4, testClient.getId());
 
     }
 

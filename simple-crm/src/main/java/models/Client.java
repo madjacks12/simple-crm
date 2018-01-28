@@ -2,19 +2,19 @@ package models;
 
 public class Client {
 
-    private String name;
+    private String clientName;
     private String phone;
     private String email;
     private int id;
 
-    public Client(String name, String phone, String email) {
-        this.name=name;
+    public Client(String clientName, String phone, String email) {
+        this.clientName=clientName;
         this.phone=phone;
         this.email = email;
     }
 
-    public String getName() {
-        return name;
+    public String getClientName() {
+        return clientName;
     }
 
     public String getPhone() {
@@ -41,14 +41,14 @@ public class Client {
         Client client = (Client) o;
 
         if (id != client.id) return false;
-        if (!name.equals(client.name)) return false;
+        if (!clientName.equals(client.clientName)) return false;
         if (phone != null ? !phone.equals(client.phone) : client.phone != null) return false;
         return email != null ? email.equals(client.email) : client.email == null;
     }
 
     @Override
     public int hashCode() {
-        int result = name.hashCode();
+        int result = clientName.hashCode();
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
         result = 31 * result + id;

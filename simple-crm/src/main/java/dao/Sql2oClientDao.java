@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Sql2oClientDao implements ClientDao {
-    private final Sql2o sql2o;
+     final Sql2o sql2o;
+
+
 
     public Sql2oClientDao(Sql2o sql2o) {
         this.sql2o = sql2o;
@@ -18,9 +20,9 @@ public class Sql2oClientDao implements ClientDao {
 
     @Override
     public void add(Client client) {
-        String sql = "INSERT INTO clients (name, phone, email) VALUES (:name, :phone, email)";
+        String sql = "INSERT INTO clients (clientName, phone, email) VALUES (:clientName, :phone, :email)";
         try (Connection con = sql2o.open()) {
-            int id = (int) con.createQuery(sql)
+            int id = (int) con.createQuery(sql, true)
                     .bind(client)
                     .executeUpdate()
                     .getKey();
@@ -87,11 +89,11 @@ public class Sql2oClientDao implements ClientDao {
     }
 
     @Override
-    public void update(int id, String name, String email, String phone) {
-        String sql = "UPDATE clients SET name = :name, phone = :phone, email = :email";
+    public void update(int id, String clientName, String email, String phone) {
+        String sql = "UPDATE clients SET clientName = :clientName, phone = :phone, email = :email";
         try (Connection con = sql2o.open()) {
             con.createQuery(sql)
-                    .addParameter("name", name)
+                    .addParameter("clientName", clientName)
                     .addParameter("phone", phone)
                     .addParameter("email", email)
                     .executeUpdate();

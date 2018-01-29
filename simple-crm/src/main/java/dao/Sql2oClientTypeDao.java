@@ -22,7 +22,7 @@ public class Sql2oClientTypeDao implements ClientTypeDao {
     public void add(ClientType clientType) {
         String sql = "INSERT INTO clienttypes (clientname) VALUES (:clientname)";
         try (Connection con = sql2o.open()) {
-            int id = (int) con.createQuery(sql)
+            int id = (int) con.createQuery(sql, true)
                     .bind(clientType)
                     .executeUpdate()
                     .getKey();

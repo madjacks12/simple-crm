@@ -20,10 +20,10 @@ public class Sql2oContactDao implements ContactDao {
         String sql = "INSERT INTO contacts (firstname, lastname, position, contactPhone, contactEmail, clientId) VALUES (:firstname, :lastname, :position, :contactPhone, :contactEmail, :clientId)";
         try (Connection con = sql2o.open()) {
             int id = (int) con.createQuery(sql, true)
-                    .bind(address)
+                    .bind(contact)
                     .executeUpdate()
                     .getKey();
-            address.setId(id);
+            contact.setId(id);
         } catch (Sql2oException ex) {
             System.out.println(ex);
         }
@@ -31,16 +31,31 @@ public class Sql2oContactDao implements ContactDao {
 
     @Override
     public List<Contact> getAllContactsByClient(int clientId) {
-        return null;
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM contacts WHERE clientId = :clientId")
+                    .addParameter("clientId", clientId)
+                    .executeAndFetch(Contact.class);
+        }
     }
 
     @Override
     public List<Contact> getAll() {
-        return null;
+        try (Connection con = sql2o.open()) {
+            return con.createQuery("SELECT * FROM contacts")
+                    .executeAndFetch(Contact.class);
+        }
     }
 
     @Override
     public void deleteById(int id) {
+        String sql = "DELETE from contacts WHERE id=:id";
+        try (Connection con = sql2o.open()) {
+            con.createQuery(sql)
+                    .addParameter("id", id)
+                    .executeUpdate();
+        } catch (Sql2oException ex){
+            System.out.println(ex);
+        }
 
     }
 }

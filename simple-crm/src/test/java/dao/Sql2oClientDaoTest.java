@@ -9,6 +9,7 @@ import org.sql2o.Sql2o;
 import org.sql2o.Connection;
 import org.sql2o.Sql2o;
 import java.sql.*;
+import java.sql.PreparedStatement;
 
 import static org.junit.Assert.*;
 
@@ -34,6 +35,9 @@ public class Sql2oClientDaoTest {
 
     @After
     public void tearDown() throws Exception {
+        String delete = "DELETE FROM clients";
+        conn.createQuery(delete)
+            .executeUpdate();
         conn.close();
     }
 
@@ -43,21 +47,21 @@ public class Sql2oClientDaoTest {
         int originalClientId = testClient.getId();
         clientDao.add(testClient);
         //must add +1 to expected every time.
-        assertEquals(4, testClient.getId());
+        assertEquals(1, testClient.getId());
 
     }
 
     @Test
-    public void addClientToClientType() {
+    public void getAllClientTypesForAClient() throws Exception{
     }
 
     @Test
     public void getAll() {
     }
 
-    @Test
-    public void getAllClientTypesForAClient() {
-    }
+//    @Test
+//    public void getAllClientTypesForAClient() {
+//    }
 
     @Test
     public void findById() {

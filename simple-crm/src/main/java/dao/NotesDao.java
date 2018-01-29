@@ -10,8 +10,8 @@ public interface NotesDao {
     void add(Notes notes);
 
     //read
-    List<Contact> getAllNotessByClient(int clientId);
-    List<Contact> getAll();
+    List<Notes> getAllNotessByClient(int clientId);
+    List<Notes> getAll();
 
     void deleteById(int id);
 

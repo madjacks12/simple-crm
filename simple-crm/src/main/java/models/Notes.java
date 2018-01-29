@@ -11,7 +11,7 @@ public class Notes{
     private int id;
     private int clientId;
 
-    public Notes(String name, String phone, String email, int clientId) {
+    public Notes(String writtenBy, String content, String createdAt, int clientId) {
         this.writtenBy = writtenBy;
         this.content = content;
         this.createdAt = System.currentTimeMillis();
@@ -77,5 +77,9 @@ public class Notes{
         result = 31 * result + id;
         result = 31 * result + clientId;
         return result;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

@@ -56,6 +56,5 @@ public class Sql2oContactDao implements ContactDao {
         } catch (Sql2oException ex){
             System.out.println(ex);
         }
-
     }
 }
